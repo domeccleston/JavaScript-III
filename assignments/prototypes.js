@@ -35,6 +35,8 @@
   console.log(jumbo.isFlying)          // false
 */
 
+
+
 /*
 
   TASK 1
@@ -71,6 +73,20 @@
 
 */
 
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+
+Person.prototype.greet = function() {
+  return `Hi, I'm ${this.name} and I'm ${this.age} years old.`;
+}
+
+Person.prototype.eat = function(edible) {
+  this.stomach.push(edible);
+  return `mmm, what a tasty ${edible}`;
+}
 /*
 
   STRETCH TASK
