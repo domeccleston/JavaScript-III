@@ -73,6 +73,8 @@
 
 */
 
+// TASK 1 solution:
+
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -87,6 +89,56 @@ Person.prototype.eat = function(edible) {
   this.stomach.push(edible);
   return `mmm, what a tasty ${edible}`;
 }
+
+Person.prototype.poop = function() {
+  this.stomach = [];
+  return `ahhhh...that's better`;
+}
+
+let me = new Person("Dom", 23);
+
+console.log(me.greet());
+console.log(me.eat("Sandwich"));
+console.log(me.stomach);
+console.log(me.poop());
+
+// TASK 2 SOLUTION:
+
+function Car(name, make) {
+	this.name = name;
+	this.make = make;
+	this.odometer = 0;
+	this.crashed = false;
+}
+
+Car.prototype.drive = function() {
+	if (this.crashed === false) {
+		this.odometer += 10;
+		return `vroom`;
+	}
+	else {
+		return `fix me first!`
+	}
+}
+
+Car.prototype.crash = function() {
+	this.crashed = true;
+	return `I crashed at ${this.odometer} miles!`
+}
+
+Car.prototype.repair = function() {
+	this.crashed = false;
+	return `Repaired!`
+}
+
+let myCar = new Car("Toyota", "Prius");
+console.log(myCar.drive(), myCar.odometer);
+console.log(myCar.crash());
+console.log(myCar.drive());
+console.log(myCar.repair());
+
+// TASK 3 SOLUTION: 
+
 /*
 
   STRETCH TASK
