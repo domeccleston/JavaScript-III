@@ -139,6 +139,21 @@ console.log(myCar.repair());
 
 // TASK 3 SOLUTION: 
 
+function Baby(name, age) {
+  Person.call(this, name, age); 
+}
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function () {
+  return `playing!`;
+}
+
+var tom = new Baby('Tom', 1,);
+
+console.log(tom.greet());
+
+
 /*
 
   STRETCH TASK
