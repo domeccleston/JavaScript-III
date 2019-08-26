@@ -35,6 +35,8 @@
   console.log(jumbo.isFlying)          // false
 */
 
+
+
 /*
 
   TASK 1
@@ -70,6 +72,87 @@
   complicated one with lots of state. Surprise us!
 
 */
+
+// TASK 1 solution:
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+
+Person.prototype.greet = function() {
+  return `Hi, I'm ${this.name} and I'm ${this.age} years old.`;
+}
+
+Person.prototype.eat = function(edible) {
+  this.stomach.push(edible);
+  return `mmm, what a tasty ${edible}`;
+}
+
+Person.prototype.poop = function() {
+  this.stomach = [];
+  return `ahhhh...that's better`;
+}
+
+let me = new Person("Dom", 23);
+
+console.log(me.greet());
+console.log(me.eat("Sandwich"));
+console.log(me.stomach);
+console.log(me.poop());
+
+// TASK 2 SOLUTION:
+
+function Car(name, make) {
+	this.name = name;
+	this.make = make;
+	this.odometer = 0;
+	this.crashed = false;
+}
+
+Car.prototype.drive = function() {
+	if (this.crashed === false) {
+		this.odometer += 10;
+		return `vroom`;
+	}
+	else {
+		return `fix me first!`
+	}
+}
+
+Car.prototype.crash = function() {
+	this.crashed = true;
+	return `I crashed at ${this.odometer} miles!`
+}
+
+Car.prototype.repair = function() {
+	this.crashed = false;
+	return `Repaired!`
+}
+
+let myCar = new Car("Toyota", "Prius");
+console.log(myCar.drive(), myCar.odometer);
+console.log(myCar.crash());
+console.log(myCar.drive());
+console.log(myCar.repair());
+
+// TASK 3 SOLUTION: 
+
+function Baby(name, age) {
+  Person.call(this, name, age); 
+}
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function () {
+  return `playing!`;
+}
+
+var tom = new Baby('Tom', 1,);
+
+console.log(tom.greet());
+
 
 /*
 
